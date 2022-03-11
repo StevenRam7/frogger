@@ -14,7 +14,7 @@ h1 {
     text-align: center;
 }
 
-#start-button {
+#start-button, #pause-button {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bolder;
     font-size: large;
@@ -23,7 +23,7 @@ h1 {
     
 }
 
-#grid {
+.grid {
     border: 2px solid;
     margin-bottom: 15px;
     margin-left: 33%;
@@ -34,7 +34,7 @@ h1 {
     background-color: rgb(66, 5, 5);
 }
 
-#grid div {
+.grid div {
     
     height: 40px;
     width: 40px;
@@ -54,4 +54,8 @@ h1 {
 
 .car-left, .car-right {
     background-color: gray;
+}
+
+.frog {
+    background-color: green;
 }
