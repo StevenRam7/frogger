@@ -1,5 +1,6 @@
 body {
-    background: linear-gradient(to right, skyblue, royalblue)
+    background: linear-gradient(to right, skyblue, royalblue);
+    text-align: center;
 }
 
 h1 {
@@ -16,7 +17,32 @@ h1 {
 #start-button {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bolder;
+    font-size: large;
     border-radius: 30px;
     padding: 15px;
     
+}
+
+#grid {
+    border: 2px solid;
+    margin-bottom: 15px;
+    margin-left: 33%;
+    height: 360px;
+    width: 360px;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+#grid div {
+    
+    height: 38px;
+    width: 38px;
+}
+
+.finish {
+    background-color: red;
+}
+
+.start {
+    background-color: red;
 }
