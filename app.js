@@ -1,13 +1,15 @@
 const hitStart = document.querySelector('#start-button');
 const hitPause = document.querySelector('#pause-button');
 const wholeGrid = document.querySelectorAll('.grid div');
+const leftLogs = document.querySelectorAll('.log-left');
+const rightLogs = document.querySelectorAll('.log-right');
 let currentBox = 76;
 const gridWidth = 9;
 const gridHeight = 9;
 
 function move(event) {
     wholeGrid[currentBox].classList.remove('frog')
-    
+
     switch(event.key) {
         case "ArrowLeft" :
             if (currentBox % gridWidth !== 0) currentBox -= 1
@@ -24,6 +26,14 @@ function move(event) {
     }
 
     wholeGrid[currentBox].classList.add('frog')
+}
+
+function autoMoveLogs() {
+
+}
+
+function moveLogLeft() {
+    
 }
 
 document.addEventListener('keyup', move)

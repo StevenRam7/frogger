@@ -8,7 +8,7 @@ h1 {
     font-weight: bolder;
     font-size: 50px;
     color: rgb(78, 77, 77);
-    border-style: dotted;
+    border-style:ridge;
     border-color: rgb(78, 77, 77);
     border-width: 8px;
     text-align: center;
@@ -31,7 +31,7 @@ h1 {
     width: 360px;
     display: flex;
     flex-wrap: wrap;
-    background-color: rgb(66, 5, 5);
+    background-color: rgb(248, 239, 239);
 }
 
 .grid div {
@@ -50,6 +50,10 @@ h1 {
 
 .log-left, .log-right {
     background-color: lightblue;
+}
+
+.L1, .L2, .L3 {
+    background-color: rgb(66, 10, 10);
 }
 
 .car-left, .car-right {
