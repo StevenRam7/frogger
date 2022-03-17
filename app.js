@@ -3,22 +3,23 @@ const hitPause = document.querySelector('#pause-button');
 const wholeGrid = document.querySelectorAll('.grid div');
 let currentBox = 76;
 const gridWidth = 9;
+const gridHeight = 9;
 
 function move(event) {
-    //console.log(event)
     wholeGrid[currentBox].classList.remove('frog')
+    
     switch(event.key) {
         case "ArrowLeft" :
-            currentBox -= 1
+            if (currentBox % gridWidth !== 0) currentBox -= 1
             break
         case "ArrowRight" :
-            currentBox += 1
+            if (currentBox % gridWidth < gridWidth - 1) currentBox += 1
             break
         case "ArrowUp" :
-            currentBox -= gridWidth
+            if (currentBox - gridHeight >= 0) currentBox -= gridHeight
             break
         case "ArrowDown" :
-            currentBox += gridWidth
+            if (currentBox + gridHeight < gridWidth * gridHeight) currentBox += gridHeight
             break
     }
 
