@@ -29,11 +29,60 @@ function move(event) {
 }
 
 function autoMoveLogs() {
-
+    leftLogs.forEach((log) => moveLogLeft(log))
+    rightLogs.forEach((log) => moveLogRight(log))
 }
 
-function moveLogLeft() {
-    
+function moveLogLeft(log) {
+    switch(true) {
+        case log.classList.contains("L1") :
+            log.classList.remove("L1")
+            log.classList.add("L2")
+            break
+        case log.classList.contains("L2") :
+            log.classList.remove("L2")
+            log.classList.add("L3")
+            break
+        case log.classList.contains("L3") :
+            log.classList.remove("L3")
+            log.classList.add("L4")
+            break
+        case log.classList.contains("L4") :
+            log.classList.remove("L4")
+            log.classList.add("L5")
+            break
+        case log.classList.contains("L5") :
+            log.classList.remove("L5")
+            log.classList.add("L1")
+            break
+    }
 }
+
+function moveLogRight(log) {
+    switch(true) {
+        case log.classList.contains("L1") :
+            log.classList.remove("L1")
+            log.classList.add("L5")
+            break
+        case log.classList.contains("L5") :
+            log.classList.remove("L5")
+            log.classList.add("L4")
+            break
+        case log.classList.contains("L4") :
+            log.classList.remove("L4")
+            log.classList.add("L3")
+            break
+        case log.classList.contains("L3") :
+            log.classList.remove("L3")
+            log.classList.add("L2")
+            break
+        case log.classList.contains("L2") :
+            log.classList.remove("L2")
+            log.classList.add("L1")
+            break
+    }
+}
+
+setInterval(autoMoveLogs, 1000)
 
 document.addEventListener('keyup', move)
