@@ -3,6 +3,8 @@ const hitPause = document.querySelector('#pause-button');
 const wholeGrid = document.querySelectorAll('.grid div');
 const leftLogs = document.querySelectorAll('.log-left');
 const rightLogs = document.querySelectorAll('.log-right');
+const leftCars = document.querySelectorAll('.car-left');
+const rightCars = document.querySelectorAll('.car-right');
 let currentBox = 76;
 const gridWidth = 9;
 const gridHeight = 9;
@@ -28,9 +30,11 @@ function move(event) {
     wholeGrid[currentBox].classList.add('frog')
 }
 
-function autoMoveLogs() {
+function autoMoveUnits() {
     leftLogs.forEach((log) => moveLogLeft(log))
     rightLogs.forEach((log) => moveLogRight(log))
+    leftCars.forEach((car) => moveCarLeft(car))
+    rightCars.forEach((car) => moveCarRight(car))
 }
 
 function moveLogLeft(log) {
@@ -83,6 +87,40 @@ function moveLogRight(log) {
     }
 }
 
-setInterval(autoMoveLogs, 1000)
+function moveCarLeft(car) {
+    switch(true) {
+        case car.classList.contains("C1") :
+            car.classList.remove("C1")
+            car.classList.add("C2")
+            break
+        case car.classList.contains("C2") :
+            car.classList.remove("C2")
+            car.classList.add("C3")
+            break
+        case car.classList.contains("C3") :
+            car.classList.remove("C3")
+            car.classList.add("C1")
+            break
+    }
+}
+
+function moveCarRight(car) {
+    switch(true) {
+        case car.classList.contains("C1") :
+            car.classList.remove("C1")
+            car.classList.add("C3")
+            break
+        case car.classList.contains("C3") :
+            car.classList.remove("C3")
+            car.classList.add("C2")
+            break
+        case car.classList.contains("C2") :
+            car.classList.remove("C2")
+            car.classList.add("C1")
+            break
+    }
+}
+
+setInterval(autoMoveUnits, 1000)
 
 document.addEventListener('keyup', move)
