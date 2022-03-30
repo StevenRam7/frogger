@@ -65,5 +65,5 @@ h1 {
 }
 
 .frog {
-    background-color: green;
+    background: radial-gradient(green, olive);
 }

@@ -1,16 +1,18 @@
 const hitStart = document.querySelector('#start-button');
 const hitPause = document.querySelector('#pause-button');
+const showResult = document.querySelector('#result');
 const wholeGrid = document.querySelectorAll('.grid div');
 const leftLogs = document.querySelectorAll('.log-left');
 const rightLogs = document.querySelectorAll('.log-right');
 const leftCars = document.querySelectorAll('.car-left');
 const rightCars = document.querySelectorAll('.car-right');
+
 let currentBox = 76;
 const gridWidth = 9;
 const gridHeight = 9;
 
-function move(event) {
-    wholeGrid[currentBox].classList.remove('frog')
+function moveFrog(event) {
+    wholeGrid[currentBox].classList.remove("frog");
 
     switch(event.key) {
         case "ArrowLeft" :
@@ -26,15 +28,15 @@ function move(event) {
             if (currentBox + gridHeight < gridWidth * gridHeight) currentBox += gridHeight
             break
     }
-
-    wholeGrid[currentBox].classList.add('frog')
+    wholeGrid[currentBox].classList.add("frog");
 }
 
 function autoMoveUnits() {
-    leftLogs.forEach((log) => moveLogLeft(log))
-    rightLogs.forEach((log) => moveLogRight(log))
-    leftCars.forEach((car) => moveCarLeft(car))
-    rightCars.forEach((car) => moveCarRight(car))
+    leftLogs.forEach((log) => moveLogLeft(log));
+    rightLogs.forEach((log) => moveLogRight(log));
+    leftCars.forEach((car) => moveCarLeft(car));
+    rightCars.forEach((car) => moveCarRight(car));
+    loss();
 }
 
 function moveLogLeft(log) {
@@ -123,10 +125,14 @@ function moveCarRight(car) {
 
 function loss() {
     if (wholeGrid[currentBox].classList.contains("C1")) {
-        console.log("You lose!")
+        console.log("You lose!");
+        showResult.textContent = "You lose!";
+        clearInterval(timer);
+        wholeGrid[currentBox].classList.remove("frog");
+        document.removeEventListener("keyup", moveFrog)
     }
 }
 
-setInterval(autoMoveUnits, 1000)
+let timer = setInterval(autoMoveUnits, 1000);
 
-document.addEventListener('keyup', move)
+document.addEventListener("keyup", moveFrog);
