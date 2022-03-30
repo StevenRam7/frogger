@@ -67,3 +67,7 @@ h1 {
 .frog {
     background: radial-gradient(green, olive);
 }
+
+.winner {
+    background-color: gold !important;
+}

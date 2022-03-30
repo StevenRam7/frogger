@@ -6,6 +6,7 @@ const leftLogs = document.querySelectorAll('.log-left');
 const rightLogs = document.querySelectorAll('.log-right');
 const leftCars = document.querySelectorAll('.car-left');
 const rightCars = document.querySelectorAll('.car-right');
+const finish = document.querySelectorAll(".finish");
 
 let currentBox = 76;
 const gridWidth = 9;
@@ -37,6 +38,7 @@ function autoMoveUnits() {
     leftCars.forEach((car) => moveCarLeft(car));
     rightCars.forEach((car) => moveCarRight(car));
     loss();
+    win();
 }
 
 function moveLogLeft(log) {
@@ -129,10 +131,21 @@ function loss() {
         showResult.textContent = "You lose!";
         clearInterval(timer);
         wholeGrid[currentBox].classList.remove("frog");
-        document.removeEventListener("keyup", moveFrog)
+        document.removeEventListener("keyup", moveFrog);
     }
 }
 
-let timer = setInterval(autoMoveUnits, 1000);
+function win() {
+    if (wholeGrid[currentBox].classList.contains("finish")) {
+        console.log("You win!");
+        showResult.textContent = "You win!";
+        clearInterval(timer);
+        wholeGrid[currentBox].classList.remove("frog");  
+        document.removeEventListener("keyup", moveFrog);
+        //finish.classList.add(".winner");
+    }
+}
+
+let timer = setInterval(autoMoveUnits, 3000);
 
 document.addEventListener("keyup", moveFrog);
