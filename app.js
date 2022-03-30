@@ -124,7 +124,7 @@ function moveCarRight(car) {
 }
 
 function loss() {
-    if (wholeGrid[currentBox].classList.contains("C1")) {
+    if (wholeGrid[currentBox].classList.contains("C1") || wholeGrid[currentBox].classList.contains("L4") || wholeGrid[currentBox].classList.contains("L5")) {
         console.log("You lose!");
         showResult.textContent = "You lose!";
         clearInterval(timer);
