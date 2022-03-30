@@ -121,6 +121,12 @@ function moveCarRight(car) {
     }
 }
 
+function loss() {
+    if (wholeGrid[currentBox].classList.contains("C1")) {
+        console.log("You lose!")
+    }
+}
+
 setInterval(autoMoveUnits, 1000)
 
 document.addEventListener('keyup', move)
