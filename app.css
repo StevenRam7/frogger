@@ -20,13 +20,29 @@ h1 {
     font-size: large;
     border-radius: 30px;
     padding: 15px;
-    
+    border: solid;
+    border-color: blue;
+}
+
+#start-button {
+    transform: skewX(10deg);
+}
+
+#pause-button {
+    transform: skewX(-10deg);
+}
+
+#start-button:hover, #pause-button:hover {
+    background-color: blue;
+    padding: 17px;
+    transition: ease;
+    transition-duration: 0.5s;
 }
 
 .grid {
     border: 2px solid;
     margin-bottom: 15px;
-    margin-left: 33%;
+    margin-left: 36%;
     height: 360px;
     width: 360px;
     display: flex;
@@ -35,7 +51,6 @@ h1 {
 }
 
 .grid div {
-    
     height: 40px;
     width: 40px;
 }
