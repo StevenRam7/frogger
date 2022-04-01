@@ -146,13 +146,15 @@ function win() {
     if (wholeGrid[currentBox].classList.contains("finish")) {
         console.log("You win!");
         showResult.textContent = "You win!";
-        clearInterval(timer);
-        //wholeGrid[currentBox].classList.remove("frog");  
+        clearInterval(timer); 
         document.removeEventListener("keyup", moveFrog);        
     }
 }
 
 startButton.addEventListener("click", () => {
+    if (paused.innerHTML == "Paused!") {
+        paused.textContent = '';
+    }
     timer = setInterval(autoMoveUnits, 1000)
     document.addEventListener("keyup", moveFrog);
 })
