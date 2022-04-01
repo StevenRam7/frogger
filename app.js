@@ -11,9 +11,9 @@ const finish = document.querySelectorAll(".finish");
 
 let currentBox = 76;
 let currentTime = 20;
-
 const gridWidth = 9;
 const gridHeight = 9;
+let timer;
 
 function moveFrog(event) {
     wholeGrid[currentBox].classList.remove("frog");
@@ -37,7 +37,7 @@ function moveFrog(event) {
 
 function autoMoveUnits() {
     currentTime--;
-    console.log(currentTime)
+    console.log(currentTime);
     timerDisplay.textContent = "Time Left: " + currentTime;
     leftLogs.forEach((log) => moveLogLeft(log));
     rightLogs.forEach((log) => moveLogRight(log));
@@ -132,7 +132,8 @@ function moveCarRight(car) {
 }
 
 function loss() {
-    if (wholeGrid[currentBox].classList.contains("C1") || wholeGrid[currentBox].classList.contains("L4") || wholeGrid[currentBox].classList.contains("L5")) {
+    if (currentTime == 0 || wholeGrid[currentBox].classList.contains("C1") || 
+    wholeGrid[currentBox].classList.contains("L4") || wholeGrid[currentBox].classList.contains("L5")) {
         console.log("You lose!");
         showResult.textContent = "You lose!";
         clearInterval(timer);
@@ -147,11 +148,17 @@ function win() {
         showResult.textContent = "You win!";
         clearInterval(timer);
         //wholeGrid[currentBox].classList.remove("frog");  
-        document.removeEventListener("keyup", moveFrog);
-        //finish.classList.add(".winner");
+        document.removeEventListener("keyup", moveFrog);        
     }
 }
 
-let timer = setInterval(autoMoveUnits, 3000);
+startButton.addEventListener("click", () => {
+    timer = setInterval(autoMoveUnits, 1000)
+    document.addEventListener("keyup", moveFrog);
+})
 
-document.addEventListener("keyup", moveFrog);
+pauseButton.addEventListener("click", () => {
+    paused.textContent = "Paused!";
+    clearInterval(timer);  
+    document.removeEventListener("keyup", moveFrog); 
+})

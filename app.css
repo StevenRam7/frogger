@@ -14,7 +14,7 @@ h1 {
     text-align: center;
 }
 
-#start-button, #pause-button {
+#startButton, #pauseButton {
     font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
     font-weight: bolder;
     font-size: large;
@@ -24,15 +24,15 @@ h1 {
     border-color: blue;
 }
 
-#start-button {
+#startButton {
     transform: skewX(10deg);
 }
 
-#pause-button {
+#pauseButton {
     transform: skewX(-10deg);
 }
 
-#start-button:hover, #pause-button:hover {
+#startButton:hover, #pauseButton:hover {
     background-color: blue;
     padding: 17px;
     transition: ease;
@@ -81,8 +81,4 @@ h1 {
 
 .frog {
     background: radial-gradient(green, olive);
-}
-
-.winner {
-    background-color: gold !important;
 }
