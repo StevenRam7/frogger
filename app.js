@@ -155,11 +155,21 @@ startButton.addEventListener("click", () => {
     if (paused.innerHTML == "Paused!") {
         paused.textContent = '';
     }
+    if (showResult.textContent.length > 0) {
+        let currentBox = 76;
+        wholeGrid[currentBox].classList.add("frog");
+        timer = setInterval(autoMoveUnits, 1000)
+        document.addEventListener("keyup", moveFrog);
+    }
+    
     timer = setInterval(autoMoveUnits, 1000)
     document.addEventListener("keyup", moveFrog);
 })
 
 pauseButton.addEventListener("click", () => {
+    if (showResult.textContent.length > 0) {
+        return null;
+    }
     paused.textContent = "Paused!";
     clearInterval(timer);  
     document.removeEventListener("keyup", moveFrog); 
