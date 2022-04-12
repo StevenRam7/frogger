@@ -159,6 +159,9 @@ startButton.addEventListener("click", () => {
     if (showResult.textContent == "You win!") {
         findFrog.classList.remove("frog");
     }
+    if (showResult.textContent == "You lose!") {
+        showResult.textContent = '';
+    }
     wholeGrid[currentBox].classList.add("frog");
     timer = setInterval(autoMoveUnits, 1000)
     document.addEventListener("keyup", moveFrog);
