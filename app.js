@@ -15,6 +15,7 @@ let currentTime = 20;
 const gridWidth = 9;
 const gridHeight = 9;
 let timer;
+let checkTimer;
 
 function moveFrog(event) {
     wholeGrid[currentBox].classList.remove("frog");
@@ -44,9 +45,12 @@ function autoMoveUnits() {
     rightLogs.forEach((log) => moveLogRight(log));
     leftCars.forEach((car) => moveCarLeft(car));
     rightCars.forEach((car) => moveCarRight(car));
+};
+
+function checkWinLoss() {
     loss();
     win();
-};
+}
 
 function moveLogLeft(log) {
     switch(true) {
@@ -153,15 +157,16 @@ function win() {
 };
 
 startButton.addEventListener("click", () => {
-    if (paused.innerHTML == "Paused!") {
+    if (paused.innerHTML === "Paused!") {
         paused.textContent = '';
     }
-    if (showResult.textContent === "You win!" || showResult.textContent == "You lose!") {
+    if (showResult.textContent === "You win!" || showResult.textContent === "You lose!") {
         location.reload();
     } 
     else {
          wholeGrid[currentBox].classList.add("frog");
-         timer = setInterval(autoMoveUnits, 1000)
+         timer = setInterval(autoMoveUnits, 1000);
+         checkTimer = setInterval(checkWinLoss, 20);
          document.addEventListener("keyup", moveFrog);
     }
 });
