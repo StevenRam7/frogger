@@ -8,6 +8,7 @@ const rightLogs = document.querySelectorAll('.log-right');
 const leftCars = document.querySelectorAll('.car-left');
 const rightCars = document.querySelectorAll('.car-right');
 const finish = document.querySelectorAll(".finish");
+const findFrog = document.querySelector(".frog");
 
 let currentBox = 76;
 let currentTime = 20;
@@ -37,7 +38,7 @@ function moveFrog(event) {
 
 function autoMoveUnits() {
     currentTime--;
-    console.log(currentTime);
+    console.log(findFrog);
     timerDisplay.textContent = "Time Left: " + currentTime;
     leftLogs.forEach((log) => moveLogLeft(log));
     rightLogs.forEach((log) => moveLogRight(log));
@@ -155,13 +156,10 @@ startButton.addEventListener("click", () => {
     if (paused.innerHTML == "Paused!") {
         paused.textContent = '';
     }
-    if (showResult.textContent.length > 0) {
-        let currentBox = 76;
-        wholeGrid[currentBox].classList.add("frog");
-        timer = setInterval(autoMoveUnits, 1000)
-        document.addEventListener("keyup", moveFrog);
+    if (showResult.textContent == "You win!") {
+        findFrog.classList.remove("frog");
     }
-    
+    wholeGrid[currentBox].classList.add("frog");
     timer = setInterval(autoMoveUnits, 1000)
     document.addEventListener("keyup", moveFrog);
 })
