@@ -34,7 +34,7 @@ function moveFrog(event) {
             break
     }
     wholeGrid[currentBox].classList.add("frog");
-}
+};
 
 function autoMoveUnits() {
     currentTime--;
@@ -46,7 +46,7 @@ function autoMoveUnits() {
     rightCars.forEach((car) => moveCarRight(car));
     loss();
     win();
-}
+};
 
 function moveLogLeft(log) {
     switch(true) {
@@ -71,7 +71,7 @@ function moveLogLeft(log) {
             log.classList.add("L1")
             break
     }
-}
+};
 
 function moveLogRight(log) {
     switch(true) {
@@ -96,7 +96,7 @@ function moveLogRight(log) {
             log.classList.add("L1")
             break
     }
-}
+};
 
 function moveCarLeft(car) {
     switch(true) {
@@ -113,7 +113,7 @@ function moveCarLeft(car) {
             car.classList.add("C1")
             break
     }
-}
+};
 
 function moveCarRight(car) {
     switch(true) {
@@ -130,10 +130,10 @@ function moveCarRight(car) {
             car.classList.add("C1")
             break
     }
-}
+};
 
 function loss() {
-    if (currentTime == 0 || wholeGrid[currentBox].classList.contains("C1") || 
+    if (currentTime === 0 || wholeGrid[currentBox].classList.contains("C1") || 
     wholeGrid[currentBox].classList.contains("L4") || wholeGrid[currentBox].classList.contains("L5")) {
         console.log("You lose!");
         showResult.textContent = "You lose!";
@@ -141,7 +141,7 @@ function loss() {
         wholeGrid[currentBox].classList.remove("frog");
         document.removeEventListener("keyup", moveFrog);
     }
-}
+};
 
 function win() {
     if (wholeGrid[currentBox].classList.contains("finish")) {
@@ -150,22 +150,21 @@ function win() {
         clearInterval(timer); 
         document.removeEventListener("keyup", moveFrog);        
     }
-}
+};
 
 startButton.addEventListener("click", () => {
     if (paused.innerHTML == "Paused!") {
         paused.textContent = '';
     }
-    if (showResult.textContent == "You win!") {
-        findFrog.classList.remove("frog");
+    if (showResult.textContent === "You win!" || showResult.textContent == "You lose!") {
+        location.reload();
+    } 
+    else {
+         wholeGrid[currentBox].classList.add("frog");
+         timer = setInterval(autoMoveUnits, 1000)
+         document.addEventListener("keyup", moveFrog);
     }
-    if (showResult.textContent == "You lose!") {
-        showResult.textContent = '';
-    }
-    wholeGrid[currentBox].classList.add("frog");
-    timer = setInterval(autoMoveUnits, 1000)
-    document.addEventListener("keyup", moveFrog);
-})
+});
 
 pauseButton.addEventListener("click", () => {
     if (showResult.textContent.length > 0) {
@@ -174,4 +173,4 @@ pauseButton.addEventListener("click", () => {
     paused.textContent = "Paused!";
     clearInterval(timer);  
     document.removeEventListener("keyup", moveFrog); 
-})
+});
